@@ -1,0 +1,1191 @@
+
+<!doctype html>
+<html lang="es">
+
+<head>
+
+    <!-- =========================================================
+         01. CONFIGURACIÓN GENERAL
+    ========================================================== -->
+
+    <meta charset="utf-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+    <meta
+        name="theme-color"
+        content="#23362c"
+    >
+
+    <title>Nuestra Boda | Santos & Gladys</title>
+
+
+    <!-- =========================================================
+         02. FUENTES DE GOOGLE
+    ========================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =========================================================
+         03. ARCHIVO CSS
+    ========================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="css/estilos.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================================
+         04. FONDO AMBIENTAL
+         Luces, decoración y pétalos animados
+    ========================================================== -->
+
+    <div class="ambient">
+
+        <div class="glow g1"></div>
+
+        <div class="glow g2"></div>
+
+        <div id="petalos"></div>
+
+    </div>
+
+
+    <!-- =========================================================
+         05. MÚSICA DE LA INVITACIÓN
+
+         Coloca tu canción dentro de:
+
+         musica/cancion.mp3
+    ========================================================== -->
+
+    <audio
+        id="audio"
+        loop
+        preload="auto"
+    >
+
+        <source
+            src="musica/cancion.mp3"
+            type="audio/mpeg"
+        >
+
+    </audio>
+
+
+    <!-- BOTÓN FLOTANTE DE MÚSICA -->
+
+    <button
+        id="musica"
+        class="musica"
+        type="button"
+        aria-label="Activar o pausar música"
+    >
+
+        <span>♪</span>
+
+    </button>
+
+
+    <!-- =========================================================
+         06. BARRA DE PROGRESO
+    ========================================================== -->
+
+    <div class="progreso">
+
+        <span id="barra"></span>
+
+    </div>
+
+
+    <!-- =========================================================
+         07. CONTENIDO PRINCIPAL
+    ========================================================== -->
+
+    <main id="app">
+
+
+        <!-- =====================================================
+             PANTALLA 01
+             PORTADA / SOBRE
+        ====================================================== -->
+
+        <section
+            class="pantalla activa portada"
+            data-paso="0"
+        >
+
+            <div class="ornamento o1">
+                ❦
+            </div>
+
+
+            <div class="contenido entrada">
+
+
+                <!-- TEXTO SUPERIOR -->
+
+                <p class="eyebrow">
+
+                    Una invitación hecha con amor
+
+                </p>
+
+
+                <!-- SOBRE -->
+
+                <div class="sobre-wrap">
+
+                    <div
+                        class="sobre"
+                        id="sobre"
+                    >
+
+
+                        <!-- TARJETA INTERIOR -->
+
+                        <div class="carta">
+
+                            <em>
+                                Nos casamos
+                            </em>
+
+                            <strong>
+                                Claudio & Gladis
+                            </strong>
+
+                            <small>
+                                21 · 11 · 2026
+                            </small>
+
+                        </div>
+
+
+                        <!-- CUERPO DEL SOBRE -->
+
+                        <div class="cuerpo"></div>
+
+
+                        <!-- SOLAPA -->
+
+                        <div class="solapa"></div>
+
+
+                        <!-- SELLO -->
+
+                        <div class="sello">
+
+                            S
+
+                            <span>
+                                &
+                            </span>
+
+                            G
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- INDICACIÓN -->
+
+                <h2 class="toque">
+
+                    Toca el sello para descubrir nuestra historia
+
+                </h2>
+
+
+                <div class="flecha">
+                    ⌄
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             PANTALLA 02
+             PRESENTACIÓN DE LOS NOVIOS
+
+             IMPORTANTE:
+             La fotografía principal normalmente se cambia
+             desde .foto-modelo en css/estilos.css
+        ====================================================== -->
+
+        <section
+            class="pantalla hero modelo-floral"
+            data-paso="1"
+        >
+
+
+            <!-- FOTO PRINCIPAL DE LOS NOVIOS -->
+
+            <div class="foto-modelo"></div>
+
+
+            <!-- DECORACIÓN -->
+
+            <div class="velo-onda"></div>
+
+
+            <!-- NOMBRES -->
+
+            <div class="tarjeta-nombres anim zoom">
+
+                <p class="mini-fecha">
+
+                    Nuestra boda  
+                     21.11.2026
+
+                </p>
+
+
+                <h1 class="nombres-modelo">
+
+                    Claudio
+
+                    <i>&</i>
+
+                    Gladys
+
+                </h1>
+
+
+                <p class="frase-modelo">
+
+                    Con mucha alegría queremos compartir contigo
+                    el comienzo de nuestro para siempre.
+
+                </p>
+
+            </div>
+
+
+            <!-- SIGUIENTE -->
+
+            <button
+                class="siguiente siguiente-modelo"
+                type="button"
+                aria-label="Continuar"
+            >
+
+                ⌄
+
+            </button>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             PANTALLA 03
+             PADRES
+        ====================================================== -->
+
+        <section
+            class="pantalla crema familia"
+            data-paso="2"
+        >
+
+
+            <!-- DECORACIONES -->
+
+            <div class="hoja h1"></div>
+
+            <div class="hoja h2"></div>
+
+
+            <div class="contenido ancho">
+
+
+                <span class="script anim a1">
+
+                    Con la bendición de Dios y nuestras familias
+
+                </span>
+
+
+                <h2 class="titulo anim a2">
+
+                    Nuestros padres
+
+                </h2>
+
+
+                <div class="divisor anim a3">
+                    ✦
+                </div>
+
+
+                <div class="dos">
+
+
+                    <!-- PADRES DEL NOVIO -->
+
+                    <article class="card-glass anim izquierda">
+
+                        <small>
+                            PADRES DEL NOVIO
+                        </small>
+
+                        <div class="mini">
+                            ❦
+                        </div>
+
+                        <h3>
+                            Teófilo Fernández Castro
+                        </h3>
+
+                        <h3>
+                            Susana Ocampo
+                        </h3>
+
+                    </article>
+
+
+
+                    <!-- PADRES DE LA NOVIA -->
+
+                    <article class="card-glass anim derecha">
+
+                        <small>
+                            PADRES DE LA NOVIA
+                        </small>
+
+                        <div class="mini">
+                            ❦
+                        </div>
+
+                        <h3>
+
+                            Mario Olmedo Aramayo
+
+                            <sup>†</sup>
+
+                        </h3>
+
+                        <h3>
+                            Norma Aramayo Martínez
+                        </h3>
+
+                    </article>
+
+                </div>
+
+
+                <!-- NAVEGACIÓN -->
+
+                <div class="nav anim a6">
+
+                   
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             PANTALLA 04
+             FECHA + CUENTA REGRESIVA
+        ====================================================== -->
+
+      <section class="pantalla verde contador-modelo" data-pantalla="3">
+
+    <!-- DECORACIONES FLORALES -->
+    <div class="flor-contador flor-arriba">🌷</div>
+    <div class="flor-contador flor-abajo">🌹</div>
+
+    <div class="contenido">
+
+        <!-- CORAZÓN -->
+        <div class="corazon-fecha anim a1">♥</div>
+
+
+        <!-- FECHA TIPO INVITACIÓN -->
+        <div class="fecha-elegante anim a2">
+
+            <div class="fecha-lateral">
+                <span class="linea-fecha"></span>
+                <strong>VIERNES</strong>
+                <span class="linea-fecha"></span>
+            </div>
+
+            <div class="fecha-centro">
+                <small>NOVIEMBRE</small>
+                <b>21</b>
+                <span>2026</span>
+            </div>
+
+            <div class="fecha-lateral">
+                <span class="linea-fecha"></span>
+                <strong>2026</strong>
+                <span class="linea-fecha"></span>
+            </div>
+
+        </div>
+
+
+        <!-- SOLO FALTAN -->
+        <h2 class="solo-faltan anim a3">
+            Solo Faltan
+        </h2>
+
+        <div class="separador-elegante">
+            <span></span>
+            <i>◆</i>
+            <span></span>
+        </div>
+
+
+        <!-- CONTADOR -->
+        <div class="contador contador-nuevo anim a4">
+
+            <div>
+                <b id="dias">00</b>
+                <span>Días</span>
+            </div>
+
+            <i>:</i>
+
+            <div>
+                <b id="horas">00</b>
+                <span>Horas</span>
+            </div>
+
+            <i>:</i>
+
+            <div>
+                <b id="minutos">00</b>
+                <span>Min.</span>
+            </div>
+
+            <i>:</i>
+
+            <div>
+                <b id="segundos">00</b>
+                <span>Seg.</span>
+            </div>
+
+        </div>
+
+
+        <div class="separador-elegante inferior">
+            <span></span>
+            <i>◆</i>
+            <span></span>
+        </div>
+
+
+        <!-- BOTÓN CALENDARIO -->
+        <a href="#"
+           class="btn-calendario anim a5">
+
+            <span class="icono-calendario">▣</span>
+
+            Agendar en el calendario
+
+        </a>
+
+
+        <!-- FRASE -->
+        <p class="bendicion-contador anim a6">
+            Con la bendición de Dios<br>
+            y nuestros padres
+        </p>
+
+    </div>
+
+</section>
+
+
+                <!-- NAVEGACIÓN -->
+
+                <div class="nav anim a6">
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             PANTALLA 05
+             CEREMONIA
+        ====================================================== -->
+
+        <section
+            class="pantalla foto iglesia"
+            data-paso="4"
+        >
+
+
+            <div class="overlay"></div>
+
+
+            <div class="contenido tarjeta-lujo anim zoom">
+
+
+                <div class="icono-medalla">
+                    ⛪
+                </div>
+
+
+                <span class="script">
+
+                    El gran momento  la 
+
+                </span>
+
+
+                <h2 class="titulo">
+
+                    Ceremonia
+
+                </h2>
+
+
+                <div class="divisor">
+                    ✦
+                </div>
+
+
+                <!-- HORA -->
+
+                <p class="hora-evento">
+
+                    14:00 Hrs.
+
+                </p>
+
+
+                <!-- NOMBRE DE LA IGLESIA -->
+
+                <p>
+
+                    <b>
+                        Iglesia Evangélica Metodista en Bolivia
+                    </b>
+
+                </p>
+
+
+                <!-- DIRECCIÓN -->
+
+                <p>
+
+                    Barrio Villa lurdes · Calle 6 de Agosto
+
+                </p>
+
+
+                <!-- MAPA -->
+
+                <a
+                    class="btn-lujo"
+                    href="https://maps.google.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+
+                    Ver ubicación ↗
+
+                </a>
+
+
+                <!-- NAVEGACIÓN -->
+
+                <div class="nav">
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             PANTALLA 06
+             RECEPCIÓN
+        ====================================================== -->
+
+        <section
+            class="pantalla foto recepcion"
+            data-paso="5"
+        >
+
+
+            <div class="overlay"></div>
+
+
+            <div class="contenido tarjeta-lujo anim zoom">
+
+
+                <div class="icono-medalla">
+                    🥂
+                </div>
+
+
+                <span class="script">
+
+                    Después del sí, celebramos
+                    en la 
+
+                </span>
+
+
+                <h2 class="titulo">
+
+                    Recepción
+
+                </h2>
+
+
+                <div class="divisor">
+                    ✦
+                </div>
+
+
+                <p>
+
+                    Después de la ceremonia
+
+                </p>
+
+
+                <!-- NOMBRE DEL SALÓN -->
+
+                <p class="hora-evento">
+
+                    Salón de Eventos “La Perla”
+
+                </p>
+
+
+                <!-- DIRECCIÓN -->
+
+                <p>
+
+                    Zona San Antonio · Calle Hernando Siles
+
+                </p>
+
+
+                <!-- MAPA -->
+
+                <a
+                    class="btn-lujo"
+                    href="https://maps.google.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+
+                    Ver ubicación ↗
+
+                </a>
+
+
+                <!-- NAVEGACIÓN -->
+
+                <div class="nav">
+
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             PANTALLA 07
+             PADRINOS
+        ====================================================== -->
+
+        <section
+            class="pantalla crema padrinos-p"
+            data-paso="6"
+        >
+
+
+            <div class="contenido superancho">
+
+
+                <span class="script anim a1">
+
+                    Personas que hacen este día aún más especial
+
+                </span>
+
+
+                <h2 class="titulo anim a2">
+
+                    Nuestros padrinos
+
+                </h2>
+
+
+                <div class="padrinos anim a3">
+
+
+                    <!-- MATRIMONIO -->
+
+                    <article>
+
+                        <span>💍</span>
+
+                        <small>
+                            MATRIMONIO
+                        </small>
+
+                        <b>
+                            Omar Cecilio Aramayo Ramos
+                        </b>
+
+                        <b>
+                            Cintia Jesusa Martínez Castro
+                        </b>
+
+                    </article>
+
+
+                    <!-- ANILLO -->
+
+                    <article>
+
+                        <span>💎</span>
+
+                        <small>
+                            ANILLO
+                        </small>
+
+                        <b>
+                            Juan Tintaya Limachi
+                        </b>
+
+                        <b>
+                            Sabina Mamani Palomino
+                        </b>
+
+                    </article>
+
+
+                    <!-- TORTA -->
+
+                    <article>
+
+                        <span>🎂</span>
+
+                        <small>
+                            TORTA
+                        </small>
+
+                        <b>
+                            Santusa Olmedo Aramayo
+                        </b>
+
+                        <b>
+                            Santos Julián Mamani Choque
+                        </b>
+
+                    </article>
+
+
+                    <!-- MINISTERIO -->
+
+                    <article>
+
+                        <span>⛪</span>
+
+                        <small>
+                            MINISTERIO
+                        </small>
+
+                        <b>
+                            Julián Aramayo Martínez
+                        </b>
+
+                    </article>
+
+
+                    <!-- TORTA 2 -->
+
+                    <article>
+
+                        <span>🎀</span>
+
+                        <small>
+                            TORTA
+                        </small>
+
+                        <b>
+                            Luciano Ariel Mamani Rivera
+                        </b>
+
+                        <b>
+                            Haydee Vanesa Fernández Ocampo
+                        </b>
+
+                    </article>
+
+
+                    <!-- LOCAL -->
+
+                    <article>
+
+                        <span>✨</span>
+
+                        <small>
+                            LOCAL
+                        </small>
+
+                        <b>
+                            Ceferino Flores Martínez
+                        </b>
+
+                        <b>
+                            Cristina Choque
+                        </b>
+
+                    </article>
+
+
+                    <!-- RECUERDOS -->
+
+                    <article>
+
+                        <span>📸</span>
+
+                        <small>
+                            RECUERDOS
+                        </small>
+
+                        <b>
+                            Elsa Aguilar
+                        </b>
+
+                    </article>
+
+
+                    <!-- RECUERDITOS -->
+
+                    <article>
+
+                        <span>🎁</span>
+
+                        <small>
+                            RECUERDITOS
+                        </small>
+
+                        <b>
+                            Lidia Fernández Ocampo
+                        </b>
+
+                    </article>
+
+
+                    <!-- FOTOGRAFÍA -->
+
+                    <article>
+
+                        <span>🎥</span>
+
+                        <small>
+                            FOTOGRAFÍA Y FILMACIÓN
+                        </small>
+
+                        <b>
+                            Álvaro Olmedo Aramayo
+                        </b>
+
+                        <b>
+                            Concepción Aiyllón Manrrique
+                        </b>
+
+                    </article>
+
+                </div>
+
+
+                <!-- NAVEGACIÓN -->
+
+                <div class="nav anim a6">
+
+                
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             PANTALLA 08
+             CÓDIGO DE VESTIMENTA
+        ====================================================== -->
+
+        <section
+            class="pantalla foto dress"
+            data-paso="7"
+        >
+
+
+            <div class="overlay"></div>
+
+
+            <div class="contenido anim zoom">
+
+
+                <span class="script claro">
+
+                    Elegancia para una noche inolvidable
+
+                </span>
+
+
+                <h2 class="titulo blanco">
+
+                    Código de vestimenta
+
+                </h2>
+
+
+                <div class="dress-icons">
+
+                    ♔　👗　🤵　♔
+
+                </div>
+
+
+                <h3>
+                    FORMAL
+                </h3>
+
+
+                <p>
+
+                    Queremos que luzcas increíble y disfrutes
+                    junto a nosotros este momento tan especial.
+
+                </p>
+
+
+                <!-- NAVEGACIÓN -->
+
+                <div class="nav">
+
+                 
+                   
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             PANTALLA 10
+             CONFIRMACIÓN DE ASISTENCIA
+        ====================================================== -->
+
+        <section
+            class="pantalla final"
+            data-paso="9"
+        >
+
+
+            <div class="destellos"></div>
+
+
+            <div class="contenido anim zoom">
+
+
+                <span class="script claro">
+
+                    El mejor regalo es tu presencia
+
+                </span>
+
+
+                <h2 class="titulo blanco">
+
+                    ¿Nos acompañas?
+
+                </h2>
+
+
+                <div class="divisor claro-div">
+                    ♡
+                </div>
+
+
+                <p>
+
+                    Estamos preparando este día con muchísimo cariño.
+
+                    <br>
+
+                    Confirma tu asistencia antes del
+
+                    <b>
+                        15 de noviembre de 2026.
+                    </b>
+
+                </p>
+
+
+                <!-- =================================================
+                     BOTÓN DE WHATSAPP
+
+                     Número configurado:
+                     +591 74245335
+                ================================================== -->
+
+                <a
+                    class="btn-lujo whatsapp"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://wa.link/29rdtd"
+                >
+
+                    Confirmar por WhatsApp ♥
+
+                </a>
+
+
+                <!-- FIRMA -->
+
+                <h1 class="firma">
+
+                    Santos
+
+                    <i>&</i>
+
+                    Gladys
+
+                </h1>
+
+
+                <p class="gracias">
+
+                    Gracias por ser parte de nuestra historia
+
+                </p>
+
+
+                <!-- NAVEGACIÓN FINAL -->
+
+                <div class="nav">
+
+                    <button
+                        class="anterior"
+                        type="button"
+                    >
+                        ←
+                    </button>
+
+
+                    <button
+                        id="reiniciar"
+                        class="reiniciar"
+                        type="button"
+                    >
+
+                        Ver nuevamente ↻
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =========================================================
+         08. INDICADOR DE PANTALLA
+
+         Ejemplo:
+         01 / 10
+         02 / 10
+         03 / 10
+    ========================================================== -->
+
+    <div
+        class="indicador"
+        id="indicador"
+    >
+
+        01 / 10
+
+    </div>
+
+
+
+    <!-- =========================================================
+         09. JAVASCRIPT
+
+         Este archivo controla:
+         - cambio entre pantallas
+         - botones siguiente/anterior
+         - apertura del sobre
+         - música
+         - contador
+         - pétalos
+         - animaciones
+         - barra de progreso
+         - reiniciar invitación
+    ========================================================== -->
+
+    <script src="js/script.js"></script>
+
+
+</body>
+
+</html>

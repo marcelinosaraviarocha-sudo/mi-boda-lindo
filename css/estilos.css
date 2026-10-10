@@ -1,0 +1,2812 @@
+/* ============================================================
+   INVITACIÓN DE BODA
+   SANTOS & GLADYS
+   ARCHIVO: css/estilos.css
+============================================================ */
+
+
+/* ============================================================
+   01. CONFIGURACIÓN GENERAL
+============================================================ */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --verde: #263b30;
+    --verde2: #405a49;
+    --oro: #c6a365;
+    --oro2: #ead7ad;
+    --crema: #f8f2e8;
+    --tinta: #3e443f;
+    --blanco: #ffffff;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--tinta);
+    background: #1d2b24;
+}
+
+
+/* ============================================================
+   02. AMBIENTE
+============================================================ */
+
+.ambient {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 80;
+    overflow: hidden;
+}
+
+.glow {
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: .13;
+}
+
+.g1 {
+    background: #f5d69b;
+    left: -180px;
+    top: -180px;
+}
+
+.g2 {
+    background: #9cc4a8;
+    right: -180px;
+    bottom: -180px;
+}
+
+
+/* ============================================================
+   03. PANTALLAS
+============================================================ */
+
+.pantalla {
+    position: absolute;
+    inset: 0;
+
+    min-height: 100dvh;
+
+    padding: 54px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: scale(1.035);
+    filter: blur(10px);
+
+    transition:
+        opacity .72s ease,
+        transform .95s cubic-bezier(.22, .61, .36, 1),
+        filter .72s ease,
+        visibility .72s;
+
+    overflow: auto;
+    scroll-behavior: smooth;
+    overscroll-behavior: contain;
+}
+
+.pantalla.activa {
+    opacity: 1;
+    visibility: visible;
+
+    transform: scale(1);
+    filter: blur(0);
+
+    z-index: 10;
+}
+
+.pantalla.saliendo-izq,
+.pantalla.saliendo-der {
+    opacity: 0;
+
+    transform: scale(.975);
+    filter: blur(9px);
+
+    z-index: 9;
+}
+
+
+/* ============================================================
+   04. CONTENEDORES
+============================================================ */
+
+.contenido {
+    position: relative;
+    z-index: 3;
+
+    width: min(760px, 94%);
+}
+
+.ancho {
+    width: min(1050px, 95%);
+}
+
+.superancho {
+    width: min(1200px, 96%);
+}
+
+
+/* ============================================================
+   05. FONDOS
+============================================================ */
+
+.crema {
+    background:
+        radial-gradient(
+            circle at 50% 10%,
+            #fffdf8 0,
+            #f8f2e8 52%,
+            #eee3d2 100%
+        );
+}
+
+.verde {
+    background:
+        radial-gradient(
+            circle at top,
+            #486351 0,
+            #263b30 58%,
+            #1c2c24 100%
+        );
+
+    color: #ffffff;
+}
+
+.foto {
+    background-size: cover;
+    background-position: center;
+}
+
+
+/* CEREMONIA */
+
+.iglesia {
+    background-image:
+        url(
+            'https://images.unsplash.com/photo-1519741347686-c1e331fcb28b?auto=format&fit=crop&w=1800&q=90'
+        );
+}
+
+
+/* RECEPCIÓN */
+
+.recepcion {
+    background-image:
+        url(
+            'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=1800&q=90'
+        );
+}
+
+
+/* VESTIMENTA */
+
+.dress {
+    background-image:
+        url(
+            'https://images.unsplash.com/photo-1507504031003-b417219a0fde?auto=format&fit=crop&w=1800&q=90'
+        );
+
+    color: #ffffff;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(18, 31, 24, .78),
+            rgba(32, 48, 38, .55),
+            rgba(20, 25, 22, .82)
+        );
+}
+
+
+/* ============================================================
+   06. PORTADA
+============================================================ */
+
+.portada {
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            #617c68,
+            #2b4034 55%,
+            #1b2a22
+        );
+
+    color: #ffffff;
+}
+
+.portada::before,
+.final::before {
+    content: "";
+
+    position: absolute;
+    inset: 18px;
+
+    border: 1px solid rgba(234, 215, 173, .42);
+
+    pointer-events: none;
+}
+
+.eyebrow {
+    font-size: .67rem;
+
+    letter-spacing: 5px;
+
+    text-transform: uppercase;
+
+    opacity: .85;
+
+    margin-bottom: 25px;
+}
+
+
+/* ============================================================
+   07. SOBRE
+============================================================ */
+
+/*
+   IMPORTANTE:
+   Aumentamos la altura para que exista espacio suficiente
+   cuando la carta salga completamente.
+*/
+
+.sobre-wrap {
+    height: 390px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    perspective: 1300px;
+}
+
+.sobre {
+    width: 350px;
+    height: 225px;
+
+    position: relative;
+
+    cursor: pointer;
+
+    filter:
+        drop-shadow(
+            0 30px 28px rgba(0, 0, 0, .28)
+        );
+
+    transition:
+        transform .4s;
+}
+
+.sobre:hover {
+    transform:
+        translateY(-5px)
+        rotateX(2deg);
+}
+
+
+/* ============================================================
+   CUERPO DEL SOBRE
+============================================================ */
+
+.cuerpo {
+    position: absolute;
+    inset: 0;
+
+    z-index: 2;
+
+    background:
+        linear-gradient(
+            145deg,
+            #eee1c9,
+            #d9c7a7
+        );
+
+    overflow: hidden;
+
+    border-radius: 3px;
+}
+
+.cuerpo::before,
+.cuerpo::after {
+    content: "";
+
+    position: absolute;
+
+    width: 260px;
+    height: 260px;
+
+    top: 25px;
+
+    background: #f4ead7;
+
+    transform:
+        rotate(45deg);
+}
+
+.cuerpo::before {
+    left: -130px;
+}
+
+.cuerpo::after {
+    right: -130px;
+}
+
+
+/* ============================================================
+   SOLAPA DEL SOBRE
+============================================================ */
+
+.solapa {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    border-left:
+        175px solid transparent;
+
+    border-right:
+        175px solid transparent;
+
+    border-top:
+        130px solid #d2bd99;
+
+    transform-origin:
+        top;
+
+    z-index: 4;
+
+    transition:
+        transform 1s cubic-bezier(.2, .8, .2, 1);
+}
+
+
+/* ============================================================
+   08. CARTA
+============================================================ */
+
+/*
+   La carta comienza completamente escondida
+   dentro del sobre.
+*/
+
+.carta {
+    position: absolute;
+
+    width: 300px;
+    height: 185px;
+
+    left: 25px;
+    top: 28px;
+
+    z-index: 1;
+
+    background: #fffaf0;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid #eadcc2;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, .05);
+
+    transition:
+        transform 1.25s cubic-bezier(.17, .89, .32, 1.20),
+        box-shadow 1s ease;
+}
+
+.carta::before {
+    content: "";
+
+    position: absolute;
+    inset: 9px;
+
+    border:
+        1px solid #e5d2ad;
+
+    pointer-events: none;
+}
+
+
+/* NOS CASAMOS */
+
+.carta em {
+    position: relative;
+    z-index: 2;
+
+    font:
+        2rem 'Great Vibes',
+        cursive;
+
+    color:
+        var(--verde);
+}
+
+
+/* NOMBRES */
+
+.carta strong {
+    position: relative;
+    z-index: 2;
+
+    font:
+        3.2rem 'Cormorant Garamond',
+        serif;
+
+    color:
+        var(--oro);
+
+    font-weight:
+        500;
+}
+
+
+/* FECHA */
+
+.carta small {
+    position: relative;
+    z-index: 2;
+
+    letter-spacing:
+        3px;
+}
+
+
+/* ============================================================
+   09. SELLO
+============================================================ */
+
+.sello {
+    position: absolute;
+
+    z-index: 6;
+
+    width: 68px;
+    height: 68px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #d9bd7e,
+            #9d783e
+        );
+
+    left: 141px;
+    top: 91px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font:
+        1.35rem 'Cormorant Garamond',
+        serif;
+
+    box-shadow:
+        inset 0 0 0 4px rgba(255,255,255,.14),
+        0 8px 20px #0005;
+
+    transition:
+        .65s;
+}
+
+.sello span {
+    font-size: .8rem;
+
+    margin:
+        0 2px;
+}
+
+
+/* ============================================================
+   10. SOBRE ABIERTO
+============================================================ */
+
+/*
+   PASO 1:
+   La solapa se abre hacia atrás.
+*/
+
+.sobre.abierto .solapa {
+    transform:
+        rotateX(180deg);
+
+    z-index: 0;
+}
+
+
+/*
+   PASO 2:
+   LA CARTA SALE COMPLETAMENTE DEL SOBRE.
+
+   Si quieres que salga todavía más arriba:
+   cambia -225px por -245px.
+*/
+
+.sobre.abierto .carta {
+    z-index: 5;
+
+    transform:
+        translateY(-225px)
+        scale(1.05);
+
+    box-shadow:
+        0 22px 45px
+        rgba(0, 0, 0, .20);
+}
+
+
+/*
+   PASO 3:
+   El sello desaparece.
+*/
+
+.sobre.abierto .sello {
+    transform:
+        scale(0)
+        rotate(120deg);
+
+    opacity: 0;
+}
+
+
+/* TEXTO DEBAJO */
+
+.toque {
+    font:
+        1.25rem 'Cormorant Garamond',
+        serif;
+
+    font-weight:
+        400;
+
+    letter-spacing:
+        1px;
+
+    margin-top:
+        5px;
+
+    animation:
+        pulse 2s infinite;
+}
+
+.flecha {
+    font-size:
+        2rem;
+
+    margin-top:
+        12px;
+
+    animation:
+        bob 1.5s infinite;
+}
+
+
+/* ============================================================
+   11. SEGUNDA PANTALLA
+   FOTO DE LOS NOVIOS
+============================================================ */
+
+.pantalla.hero.modelo-floral {
+    background:
+        #fffaf6 !important;
+
+    padding:
+        0 !important;
+
+    overflow:
+        hidden;
+}
+
+
+/* ============================================================
+   FOTO PRINCIPAL
+
+   UBICACIÓN:
+   img/novios.jpg
+============================================================ */
+
+.modelo-floral .foto-modelo {
+    position:
+        absolute;
+
+    inset:
+        0 0 31% 0;
+
+    background:
+        url('../img/novios.jpg')
+        center 42% / cover
+        no-repeat;
+}
+
+.modelo-floral .foto-modelo::after {
+    content: "";
+
+    position:
+        absolute;
+
+    inset:
+        auto 0 0;
+
+    height:
+        34%;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            #fffaf6 92%
+        );
+}
+
+
+/* ============================================================
+   ONDA BLANCA
+============================================================ */
+
+.modelo-floral .velo-onda {
+    position:
+        absolute;
+
+    left:
+        -8%;
+
+    right:
+        -8%;
+
+    bottom:
+        26%;
+
+    height:
+        115px;
+
+    background:
+        #fffaf6;
+
+    border-radius:
+        50% 50% 0 0 /
+        45% 45% 0 0;
+
+    transform:
+        rotate(-2deg);
+}
+
+
+/* ============================================================
+   CÍRCULO SANTOS & GLADYS
+============================================================ */
+
+.modelo-floral .tarjeta-nombres {
+    position:
+        absolute;
+
+    z-index:
+        2;
+
+    left:
+        0;
+
+    right:
+        0;
+
+    margin-left:
+        auto;
+
+    margin-right:
+        auto;
+
+    bottom:
+        3.5%;
+
+    width:
+        min(82vw, 430px);
+
+    height:
+        min(82vw, 430px);
+
+    max-height:
+        43vh;
+
+    border:
+        3px solid #d89f1a;
+
+    border-radius:
+        50%;
+
+    background:
+        rgba(255, 255, 255, 0.94);
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    box-shadow:
+        0 18px 55px
+        rgba(92,50,42,.14);
+
+    padding:
+        30px;
+
+    transform:
+        none;
+}
+
+
+/* FLORES */
+
+.modelo-floral .tarjeta-nombres::before,
+.modelo-floral .tarjeta-nombres::after {
+    position:
+        absolute;
+
+    font-size:
+        64px;
+
+    filter:
+        drop-shadow(
+            0 5px 7px
+            rgba(80,40,30,.18)
+        );
+}
+
+.modelo-floral .tarjeta-nombres::before {
+    content:
+        "🌹";
+
+    right:
+        -17px;
+
+    top:
+        20px;
+
+    transform:
+        rotate(20deg);
+}
+
+.modelo-floral .tarjeta-nombres::after {
+    content:
+        "🌸";
+
+    left:
+        -12px;
+
+    bottom:
+        22px;
+
+    transform:
+        rotate(-18deg);
+}
+
+
+/* FECHA */
+
+/* FECHA: Nuestra boda · 21.11.2026 */
+.modelo-floral .mini-fecha {
+    font-family: 'Cormorant Garamond', serif;
+
+    /* Más separación entre letras */
+    letter-spacing: .40em;
+
+    /* Más claro para que no se vea oscuro */
+    color: #0f0f0e;
+
+    font-size: .70rem;
+    text-transform: uppercase;
+
+    /* Más espacio antes de Santos */
+    margin-bottom: 18px;
+}
+
+
+/* NOMBRES: Santos & Gladys */
+.modelo-floral .nombres-modelo {
+    font-family: 'Great Vibes', cursive;
+    color: #c85f6a;
+
+    /* Un poco más pequeños */
+    font-size: clamp(2.7rem, 8vw, 4.7rem);
+
+    font-weight: 400;
+
+    /* Más separación entre Santos y Gladys */
+    line-height: .88;
+
+    text-align: center;
+    text-shadow: 0 2px 0 #fff;
+}
+
+
+/* SIGNO & */
+.modelo-floral .nombres-modelo i {
+    display: block;
+
+    /* Un poco más pequeño */
+    font-size: .48em;
+
+    color: #b68a50;
+
+    /* Separa Santos, & y Gladys */
+    margin: .28em 0;
+
+    font-weight: 400;
+}
+
+/* FRASE */
+
+.modelo-floral .frase-modelo {
+    font-family:
+        'Cormorant Garamond',
+        serif;
+
+    color:
+        #6d554b;
+
+    font-size:
+        clamp(
+            .9rem,
+            2.7vw,
+            1.1rem
+        );
+
+    line-height:
+        1.35;
+
+    text-align:
+        center;
+
+    max-width:
+        310px;
+
+    margin:
+        12px auto 0;
+}
+
+
+/* BOTÓN SIGUIENTE */
+
+.modelo-floral .siguiente-modelo {
+    position:
+        absolute;
+
+    z-index:
+        6;
+
+    right:
+        18px;
+
+    bottom:
+        18px;
+
+    width:
+        46px;
+
+    height:
+        46px;
+
+    border-radius:
+        50%;
+
+    border:
+        1px solid #d4b06a;
+
+    background:
+        #ffffff;
+
+    color:
+        #a97942;
+
+    font-size:
+        22px;
+
+    box-shadow:
+        0 7px 22px
+        rgba(90,55,40,.15);
+
+    cursor:
+        pointer;
+}
+
+
+/* ============================================================
+   12. TIPOGRAFÍAS
+============================================================ */
+
+.script {
+    font:
+        clamp(2.7rem, 7vw, 4.5rem)
+        'Great Vibes',
+        cursive;
+
+    color:
+        var(--oro);
+
+    display:
+        block;
+
+    margin-bottom:
+        8px;
+}
+
+.titulo {
+    font:
+        clamp(2.2rem, 6vw, 4rem)
+        'Cormorant Garamond',
+        serif;
+
+    color:
+        var(--verde);
+
+    font-weight:
+        600;
+}
+
+.blanco,
+.claro {
+    color:
+        #ffffff;
+}
+
+.dorado {
+    color:
+        var(--oro2);
+}
+
+.divisor {
+    color:
+        var(--oro);
+
+    font-size:
+        1.3rem;
+
+    margin:
+        22px;
+}
+
+.fechaGrande {
+    font:
+        1.25rem 'Cormorant Garamond',
+        serif;
+
+    letter-spacing:
+        5px;
+
+    margin:
+        25px 0;
+}
+
+
+/* ============================================================
+   13. PADRES
+============================================================ */
+
+.dos {
+    display:
+        grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:
+        26px;
+
+    margin:
+        38px 0;
+}
+
+.card-glass {
+    padding:
+        45px 28px;
+
+    background:
+        #fff9;
+
+    border:
+        1px solid #d8c7a7;
+
+    box-shadow:
+        0 22px 60px #4b3d2914;
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+}
+
+.card-glass::before {
+    content:
+        "";
+
+    position:
+        absolute;
+
+    width:
+        90px;
+
+    height:
+        90px;
+
+    border:
+        1px solid #dbc79f;
+
+    border-radius:
+        50%;
+
+    left:
+        -45px;
+
+    top:
+        -45px;
+}
+
+.card-glass small,
+.padrinos small {
+    display:
+        block;
+
+    letter-spacing:
+        3px;
+
+    color:
+        var(--oro);
+
+    font-size:
+        .65rem;
+
+    margin-bottom:
+        18px;
+}
+
+.card-glass h3 {
+    font:
+        1.6rem 'Cormorant Garamond',
+        serif;
+
+    margin:
+        10px;
+}
+
+.mini {
+    color:
+        var(--oro);
+
+    font-size:
+        1.4rem;
+}
+
+
+/* DECORACIÓN */
+
+.hoja {
+    position:
+        absolute;
+
+    width:
+        250px;
+
+    height:
+        250px;
+
+    border:
+        1px solid #cdb78355;
+
+    border-radius:
+        70% 0 70% 0;
+}
+
+.h1 {
+    left:
+        -130px;
+
+    top:
+        -90px;
+
+    transform:
+        rotate(30deg);
+}
+
+.h2 {
+    right:
+        -130px;
+
+    bottom:
+        -90px;
+
+    transform:
+        rotate(210deg);
+}
+
+
+/* ============================================================
+   14. CONTADOR
+============================================================ */
+
+/* ============================================================
+   CONTADOR - MODELO ELEGANTE
+============================================================ */
+
+.contador-modelo {
+    background:
+        linear-gradient(
+            rgba(255, 253, 249, .97),
+            rgba(255, 253, 249, .97)
+        );
+
+    color: #443c37;
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* CORAZÓN */
+
+.corazon-fecha {
+    color: #d95763;
+    font-size: 2.3rem;
+    margin-bottom: 25px;
+}
+
+
+/* ============================================================
+   FECHA
+============================================================ */
+
+.fecha-elegante {
+    display: grid;
+    grid-template-columns: 1fr 125px 1fr;
+    align-items: center;
+
+    width: min(650px, 95%);
+    margin: 0 auto 50px;
+
+    gap: 20px;
+}
+
+
+/* LADOS */
+
+.fecha-lateral {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 13px;
+}
+
+
+.fecha-lateral strong {
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: 1.35rem;
+    font-weight: 500;
+
+    letter-spacing: 2px;
+
+    color: #403832;
+}
+
+
+.linea-fecha {
+    display: block;
+
+    width: 100%;
+    height: 1px;
+
+    background: #c49b52;
+}
+
+
+/* CENTRO */
+
+.fecha-centro {
+    min-height: 155px;
+
+    border: 2px solid #c49b52;
+    border-radius: 42px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    background: #fffdf9;
+}
+
+
+.fecha-centro small {
+    font-family: 'Montserrat', sans-serif;
+
+    font-size: .65rem;
+
+    letter-spacing: 2px;
+
+    color: #4d433d;
+}
+
+
+.fecha-centro b {
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: 4.4rem;
+    line-height: .95;
+
+    font-weight: 400;
+
+    color: #d75b65;
+}
+
+
+.fecha-centro span {
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: 1.3rem;
+
+    letter-spacing: 3px;
+
+    color: #403832;
+}
+
+
+/* ============================================================
+   SOLO FALTAN
+============================================================ */
+
+.solo-faltan {
+    font-family: 'Great Vibes', cursive;
+
+    font-size: clamp(2.7rem, 7vw, 4rem);
+
+    font-weight: 400;
+
+    color: #403832;
+
+    margin-bottom: 5px;
+}
+
+
+/* SEPARADOR */
+
+.separador-elegante {
+    width: min(500px, 85%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 15px;
+}
+
+
+.separador-elegante span {
+    height: 1px;
+    background: #d4a04a;
+    flex: 1;
+}
+
+
+.separador-elegante i {
+    font-style: normal;
+
+    color: #d4a04a;
+
+    font-size: .8rem;
+
+    margin: 0 7px;
+}
+
+
+.separador-elegante.inferior {
+    margin-top: 10px;
+    margin-bottom: 35px;
+}
+
+
+/* ============================================================
+   CONTADOR
+============================================================ */
+
+.contador-modelo .contador-nuevo {
+    margin: 15px auto 10px;
+    gap: 6px;
+}
+
+
+.contador-modelo .contador-nuevo div {
+    background: transparent;
+
+    border: 0;
+
+    width: 110px;
+    height: auto;
+
+    backdrop-filter: none;
+}
+
+
+.contador-modelo .contador-nuevo div:hover {
+    transform: none;
+    border: 0;
+    box-shadow: none;
+}
+
+
+.contador-modelo .contador-nuevo b {
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: clamp(2.8rem, 8vw, 5rem);
+
+    font-weight: 400;
+
+    color: #d99a8b;
+}
+
+
+.contador-modelo .contador-nuevo span {
+    font-family: 'Great Vibes', cursive;
+
+    font-size: 1.5rem;
+
+    text-transform: none;
+
+    letter-spacing: 0;
+
+    color: #403832;
+
+    margin-top: 8px;
+}
+
+
+.contador-modelo .contador-nuevo i {
+    display: block;
+
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: 3.3rem;
+
+    color: #d99a8b;
+
+    margin-top: -20px;
+}
+
+
+/* ============================================================
+   BOTÓN CALENDARIO
+============================================================ */
+
+.btn-calendario {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 13px;
+
+    min-width: 310px;
+
+    padding: 12px 24px;
+
+    border: 2px solid #cf7076;
+    border-radius: 8px;
+
+    color: #403832;
+
+    background: #fff;
+
+    font-family: 'Great Vibes', cursive;
+
+    font-size: 1.7rem;
+
+    text-decoration: none;
+
+    transition: .3s;
+}
+
+
+.btn-calendario:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 12px 25px rgba(100, 60, 50, .12);
+}
+
+
+.icono-calendario {
+    color: #b48742;
+
+    font-family: 'Montserrat', sans-serif;
+
+    font-size: 1.5rem;
+}
+
+
+/* ============================================================
+   BENDICIÓN
+============================================================ */
+
+.bendicion-contador {
+    font-family: 'Great Vibes', cursive;
+
+    font-size: clamp(2.2rem, 6vw, 3.8rem);
+
+    color: #332e2a;
+
+    line-height: 1.15;
+
+    margin-top: 55px;
+}
+
+
+/* ============================================================
+   FLORES DECORATIVAS
+============================================================ */
+
+.flor-contador {
+    position: absolute;
+
+    font-size: 5rem;
+
+    z-index: 1;
+
+    pointer-events: none;
+}
+
+
+.flor-arriba {
+    left: -20px;
+    top: 20px;
+
+    transform: rotate(-25deg);
+}
+
+
+.flor-abajo {
+    right: -15px;
+    bottom: 20px;
+
+    transform: rotate(25deg);
+}
+
+
+/* ============================================================
+   CELULAR
+============================================================ */
+
+@media (max-width: 600px) {
+
+    .contador-modelo {
+        padding:
+            35px 12px 45px;
+    }
+
+
+    .corazon-fecha {
+        font-size:
+            1.8rem;
+
+        margin-bottom:
+            15px;
+    }
+
+
+    .fecha-elegante {
+        grid-template-columns:
+            1fr 90px 1fr;
+
+        gap:
+            8px;
+
+        margin-bottom:
+            35px;
+    }
+
+
+    .fecha-centro {
+        min-height:
+            125px;
+
+        border-radius:
+            32px;
+    }
+
+
+    .fecha-centro b {
+        font-size:
+            3.5rem;
+    }
+
+
+    .fecha-centro span {
+        font-size:
+            1rem;
+    }
+
+
+    .fecha-lateral strong {
+        font-size:
+            .95rem;
+    }
+
+
+    .solo-faltan {
+        font-size:
+            2.7rem;
+    }
+
+
+    .contador-modelo .contador-nuevo {
+        display:
+            flex;
+
+        flex-wrap:
+            nowrap;
+
+        gap:
+            1px;
+    }
+
+
+    .contador-modelo .contador-nuevo div {
+        width:
+            23%;
+    }
+
+
+    .contador-modelo .contador-nuevo b {
+        font-size:
+            2.7rem;
+    }
+
+
+    .contador-modelo .contador-nuevo span {
+        font-size:
+            1.15rem;
+    }
+
+
+    .contador-modelo .contador-nuevo i {
+        display:
+            block;
+
+        font-size:
+            2.2rem;
+    }
+
+
+    .btn-calendario {
+        min-width:
+            0;
+
+        width:
+            90%;
+
+        font-size:
+            1.45rem;
+    }
+
+
+    .bendicion-contador {
+        font-size:
+            2.5rem;
+
+        margin-top:
+            45px;
+    }
+
+
+    .flor-contador {
+        font-size:
+            3.5rem;
+    }
+}
+
+/* ============================================================
+   15. TARJETAS CEREMONIA / RECEPCIÓN
+============================================================ */
+
+.tarjeta-lujo {
+    background:
+        rgba(255,252,245,.93);
+
+    padding:
+        50px 45px;
+
+    color:
+        var(--tinta);
+
+    border:
+        1px solid #e5d2ad;
+
+    box-shadow:
+        0 30px 80px #0005;
+
+    backdrop-filter:
+        blur(12px);
+
+    max-width:
+        680px;
+}
+
+.tarjeta-lujo::before {
+    content:
+        "";
+
+    position:
+        absolute;
+
+    inset:
+        10px;
+
+    border:
+        1px solid #c6a36566;
+
+    pointer-events:
+        none;
+}
+
+.tarjeta-lujo p {
+    margin:
+        10px;
+
+    line-height:
+        1.6;
+}
+
+.icono-medalla {
+    width:
+        76px;
+
+    height:
+        76px;
+
+    margin:
+        -88px auto 18px;
+
+    border-radius:
+        50%;
+
+    background:
+        var(--verde);
+
+    border:
+        4px solid var(--crema);
+
+    box-shadow:
+        0 0 0 1px var(--oro);
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    font-size:
+        2rem;
+}
+
+.hora-evento {
+    font:
+        1.8rem 'Cormorant Garamond',
+        serif;
+
+    color:
+        var(--verde);
+
+    font-weight:
+        600;
+}
+
+
+/* ============================================================
+   16. BOTONES
+============================================================ */
+
+.btn-lujo {
+    border:
+        1px solid var(--oro);
+
+    background:
+        var(--oro);
+
+    color:
+        #ffffff;
+
+    padding:
+        14px 25px;
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        2px;
+
+    font-size:
+        .66rem;
+
+    text-decoration:
+        none;
+
+    display:
+        inline-block;
+
+    cursor:
+        pointer;
+
+    transition:
+        .35s;
+
+    margin:
+        14px 4px;
+}
+
+.btn-lujo:hover {
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 12px 28px #8c6c3540;
+
+    background:
+        #b38f51;
+}
+
+.claro-btn {
+    background:
+        transparent;
+
+    border-color:
+        var(--oro2);
+
+    color:
+        var(--oro2);
+}
+
+.nav {
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+
+    margin-top:
+        28px;
+}
+
+.anterior,
+.reiniciar {
+    border:
+        1px solid var(--oro);
+
+    background:
+        transparent;
+
+    color:
+        var(--oro);
+
+    padding:
+        13px 18px;
+
+    cursor:
+        pointer;
+
+    transition:
+        .3s;
+}
+
+.anterior:hover,
+.reiniciar:hover {
+    background:
+        var(--oro);
+
+    color:
+        #ffffff;
+}
+
+
+/* ============================================================
+   17. PADRINOS
+============================================================ */
+
+.padrinos {
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap:
+        13px;
+
+    margin-top:
+        30px;
+}
+
+.padrinos article {
+    min-height:
+        155px;
+
+    padding:
+        23px 15px;
+
+    background:
+        #ffffff;
+
+    border:
+        1px solid #dfd1b7;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    justify-content:
+        center;
+
+    transition:
+        .4s;
+
+    box-shadow:
+        0 8px 25px #0000000a;
+}
+
+.padrinos article:hover {
+    transform:
+        translateY(-8px)
+        scale(1.015);
+
+    box-shadow:
+        0 18px 40px #6c573521;
+
+    border-color:
+        var(--oro);
+}
+
+.padrinos article > span {
+    font-size:
+        1.8rem;
+
+    margin-bottom:
+        8px;
+}
+
+.padrinos b {
+    font:
+        1.08rem 'Cormorant Garamond',
+        serif;
+
+    margin:
+        2px;
+}
+
+
+/* ============================================================
+   18. VESTIMENTA
+============================================================ */
+
+.dress h3 {
+    font:
+        2rem 'Cormorant Garamond',
+        serif;
+
+    color:
+        var(--oro2);
+
+    letter-spacing:
+        5px;
+}
+
+.dress p {
+    max-width:
+        600px;
+
+    margin:
+        20px auto;
+
+    line-height:
+        1.8;
+}
+
+.dress-icons {
+    font-size:
+        2.5rem;
+
+    margin:
+        28px;
+}
+
+
+/* ============================================================
+   19. GALERÍA
+============================================================ */
+
+.galeria .fotos {
+    display:
+        grid;
+
+    grid-template-columns:
+        1.2fr .8fr 1.2fr;
+
+    gap:
+        12px;
+
+    margin:
+        32px 0;
+}
+
+.fotos figure {
+    height:
+        410px;
+
+    overflow:
+        hidden;
+
+    position:
+        relative;
+}
+
+.fotos figure:nth-child(2) {
+    height:
+        350px;
+
+    margin-top:
+        30px;
+}
+
+.fotos img {
+    width:
+        100%;
+
+    height:
+        100%;
+
+    object-fit:
+        cover;
+
+    transition:
+        1s;
+}
+
+.fotos figure:hover img {
+    transform:
+        scale(1.08);
+}
+
+.fotos figcaption {
+    position:
+        absolute;
+
+    bottom:
+        0;
+
+    left:
+        0;
+
+    right:
+        0;
+
+    padding:
+        30px 10px 15px;
+
+    background:
+        linear-gradient(
+            transparent,
+            #0009
+        );
+
+    color:
+        #ffffff;
+
+    font:
+        1.5rem 'Great Vibes',
+        cursive;
+}
+
+.nota {
+    font-size:
+        .75rem;
+
+    color:
+        #8a8175;
+}
+
+
+/* ============================================================
+   20. FINAL
+============================================================ */
+
+.final {
+    background:
+        radial-gradient(
+            circle at top,
+            #526c59,
+            #263b30 58%,
+            #17231d
+        );
+
+    color:
+        #ffffff;
+}
+
+.final p {
+    line-height:
+        1.8;
+}
+
+.whatsapp {
+    background:
+        #ffffff;
+
+    color:
+        var(--verde);
+
+    border-color:
+        #ffffff;
+
+    margin:
+        28px;
+}
+
+.firma {
+    font:
+        clamp(4rem,11vw,7rem)
+        'Great Vibes',
+        cursive;
+
+    font-weight:
+        400;
+
+    color:
+        var(--oro2);
+
+    margin-top:
+        20px;
+}
+
+.firma i {
+    font:
+        1.6rem 'Cormorant Garamond',
+        serif;
+
+    margin:
+        0 10px;
+}
+
+.gracias {
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        4px;
+
+    font-size:
+        .65rem;
+}
+
+.claro-div {
+    color:
+        var(--oro2);
+}
+
+
+/* ============================================================
+   21. MÚSICA
+============================================================ */
+
+.musica {
+    position:
+        fixed;
+
+    right:
+        22px;
+
+    top:
+        22px;
+
+    z-index:
+        100;
+
+    width:
+        52px;
+
+    height:
+        52px;
+
+    border-radius:
+        50%;
+
+    border:
+        1px solid #ead7ad88;
+
+    background:
+        #263b30cc;
+
+    color:
+        #ffffff;
+
+    font-size:
+        1.2rem;
+
+    cursor:
+        pointer;
+
+    backdrop-filter:
+        blur(8px);
+}
+
+.musica.on {
+    animation:
+        spin 5s linear infinite;
+
+    box-shadow:
+        0 0 0 5px #c6a36522;
+}
+
+
+/* ============================================================
+   22. PROGRESO
+============================================================ */
+
+.progreso {
+    position:
+        fixed;
+
+    left:
+        0;
+
+    bottom:
+        0;
+
+    width:
+        100%;
+
+    height:
+        3px;
+
+    background:
+        #fff2;
+
+    z-index:
+        100;
+}
+
+.progreso span {
+    display:
+        block;
+
+    height:
+        100%;
+
+    width:
+        0;
+
+    background:
+        var(--oro);
+
+    transition:
+        width .8s;
+}
+
+
+/* INDICADOR */
+
+.indicador {
+    position:
+        fixed;
+
+    left:
+        25px;
+
+    bottom:
+        22px;
+
+    z-index:
+        100;
+
+    color:
+        #ffffff;
+
+    font:
+        1rem 'Cormorant Garamond',
+        serif;
+
+    letter-spacing:
+        2px;
+
+    text-shadow:
+        0 2px 5px #000;
+}
+
+
+/* ============================================================
+   23. PÉTALOS
+============================================================ */
+
+.petalo {
+    position:
+        fixed;
+
+    top:
+        -30px;
+
+    width:
+        11px;
+
+    height:
+        17px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #e8cfd0
+        );
+
+    border-radius:
+        80% 20% 70% 30%;
+
+    z-index:
+        81;
+
+    pointer-events:
+        none;
+
+    animation:
+        fall linear forwards;
+}
+
+
+/* ============================================================
+   24. ANIMACIONES
+============================================================ */
+
+.pantalla.activa .anim {
+    opacity:
+        0;
+
+    animation:
+        reveal .85s forwards;
+}
+
+.pantalla.activa .a1 {
+    animation-delay:
+        .15s;
+}
+
+.pantalla.activa .a2 {
+    animation-delay:
+        .28s;
+}
+
+.pantalla.activa .a3 {
+    animation-delay:
+        .40s;
+}
+
+.pantalla.activa .a4 {
+    animation-delay:
+        .52s;
+}
+
+.pantalla.activa .a5 {
+    animation-delay:
+        .64s;
+}
+
+.pantalla.activa .a6 {
+    animation-delay:
+        .76s;
+}
+
+.pantalla.activa .izquierda {
+    animation-name:
+        leftIn;
+}
+
+.pantalla.activa .derecha {
+    animation-name:
+        rightIn;
+}
+
+.pantalla.activa .zoom {
+    animation-name:
+        zoomIn;
+}
+
+.pantalla.activa .modelo-floral .tarjeta-nombres.anim,
+.pantalla.activa.modelo-floral .tarjeta-nombres.anim {
+    animation:
+        circuloEntrada
+        1.05s
+        cubic-bezier(.22,.61,.36,1)
+        .16s
+        both;
+}
+
+
+/* ORNAMENTO */
+
+.o1 {
+    position:
+        absolute;
+
+    color:
+        #fff1;
+
+    font-size:
+        18rem;
+
+    transform:
+        rotate(-20deg);
+}
+
+
+/* ============================================================
+   25. KEYFRAMES
+============================================================ */
+
+@keyframes reveal {
+
+    from {
+        opacity:
+            0;
+
+        transform:
+            translateY(35px);
+    }
+
+    to {
+        opacity:
+            1;
+
+        transform:
+            none;
+    }
+}
+
+
+@keyframes leftIn {
+
+    from {
+        opacity:
+            0;
+
+        transform:
+            translateX(-70px)
+            rotate(-2deg);
+    }
+
+    to {
+        opacity:
+            1;
+
+        transform:
+            none;
+    }
+}
+
+
+@keyframes rightIn {
+
+    from {
+        opacity:
+            0;
+
+        transform:
+            translateX(70px)
+            rotate(2deg);
+    }
+
+    to {
+        opacity:
+            1;
+
+        transform:
+            none;
+    }
+}
+
+
+@keyframes zoomIn {
+
+    from {
+        opacity:
+            0;
+
+        transform:
+            scale(.85)
+            translateY(25px);
+    }
+
+    to {
+        opacity:
+            1;
+
+        transform:
+            none;
+    }
+}
+
+
+@keyframes circuloEntrada {
+
+    0% {
+        opacity:
+            0;
+
+        transform:
+            scale(.88);
+
+        filter:
+            blur(8px);
+    }
+
+    60% {
+        opacity:
+            1;
+
+        transform:
+            scale(1.025);
+
+        filter:
+            blur(0);
+    }
+
+    100% {
+        opacity:
+            1;
+
+        transform:
+            scale(1);
+
+        filter:
+            blur(0);
+    }
+}
+
+
+@keyframes pulse {
+
+    50% {
+        opacity:
+            .5;
+    }
+}
+
+
+@keyframes bob {
+
+    50% {
+        transform:
+            translateY(9px);
+    }
+}
+
+
+@keyframes spin {
+
+    to {
+        transform:
+            rotate(360deg);
+    }
+}
+
+
+@keyframes fall {
+
+    0% {
+        transform:
+            translate(0,-30px)
+            rotate(0);
+    }
+
+    50% {
+        transform:
+            translate(55px,50vh)
+            rotate(180deg);
+    }
+
+    100% {
+        transform:
+            translate(-35px,110vh)
+            rotate(360deg);
+    }
+}
+
+
+/* ============================================================
+   26. TABLET / CELULAR
+============================================================ */
+
+@media (max-width: 760px) {
+
+    .pantalla {
+        padding:
+            65px 14px 45px;
+    }
+
+
+    .dos,
+    .padrinos {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .padrinos {
+        max-height:
+            55vh;
+
+        overflow:
+            auto;
+
+        padding:
+            4px;
+    }
+
+
+    /* CONTADOR */
+
+    .contador {
+        gap:
+            5px;
+    }
+
+    .contador div {
+        width:
+            23%;
+
+        height:
+            105px;
+    }
+
+    .contador b {
+        font-size:
+            2.35rem;
+    }
+
+    .contador i {
+        display:
+            none;
+    }
+
+
+    /* GALERÍA */
+
+    .galeria .fotos {
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+    .fotos figure,
+    .fotos figure:nth-child(2) {
+        height:
+            260px;
+
+        margin:
+            0;
+    }
+
+    .fotos figure:last-child {
+        grid-column:
+            1 / 3;
+    }
+
+
+    /* SOBRE */
+
+    .sobre {
+        transform:
+            scale(.86);
+    }
+
+    .sobre:hover {
+        transform:
+            scale(.86)
+            translateY(-5px);
+    }
+
+
+    /*
+       IMPORTANTE:
+       Cuando la carta está abierta mantenemos
+       el tamaño del sobre pero la carta puede salir.
+    */
+
+    .sobre.abierto .carta {
+        transform:
+            translateY(-220px)
+            scale(1.04);
+    }
+
+
+    .tarjeta-lujo {
+        padding:
+            42px 22px;
+    }
+
+
+    .script {
+        font-size:
+            2.8rem;
+    }
+
+
+    .titulo {
+        font-size:
+            2.3rem;
+    }
+
+
+    .indicador {
+        font-size:
+            .8rem;
+    }
+
+
+    .musica {
+        width:
+            46px;
+
+        height:
+            46px;
+    }
+
+
+    .card-glass {
+        padding:
+            28px 18px;
+    }
+
+
+    .familia .dos {
+        gap:
+            12px;
+    }
+
+
+    .familia .card-glass h3 {
+        font-size:
+            1.35rem;
+    }
+}
+
+
+/* ============================================================
+   27. TELÉFONOS PEQUEÑOS
+============================================================ */
+
+@media (max-width: 600px) {
+
+    /*
+       SOBRE
+       Reducimos un poco el espacio para que entre
+       correctamente en pantallas pequeñas.
+    */
+
+    .sobre-wrap {
+        height:
+            365px;
+    }
+
+
+    /*
+       La carta sigue saliendo completamente.
+    */
+
+    .sobre.abierto .carta {
+        transform:
+            translateY(-215px)
+            scale(1.03);
+    }
+
+
+    /* FOTO NOVIOS */
+
+    .modelo-floral .foto-modelo {
+        bottom:
+            36%;
+    }
+
+
+    /* ONDA */
+
+    .modelo-floral .velo-onda {
+        bottom:
+            31%;
+
+        height:
+            90px;
+    }
+
+
+    /* CÍRCULO */
+
+    .modelo-floral .tarjeta-nombres {
+        left:
+            0;
+
+        right:
+            0;
+
+        margin-left:
+            auto;
+
+        margin-right:
+            auto;
+
+        bottom:
+            4%;
+
+        width:
+            76vw;
+
+        height:
+            76vw;
+
+        max-height:
+            38vh;
+
+        transform:
+            none;
+    }
+
+
+    /* FLORES DEL CÍRCULO */
+
+    .modelo-floral .tarjeta-nombres::before,
+    .modelo-floral .tarjeta-nombres::after {
+        font-size:
+            48px;
+    }
+}
